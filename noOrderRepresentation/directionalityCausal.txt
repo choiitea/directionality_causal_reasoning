@@ -1,0 +1,57 @@
+# Network without explicit Shape-Feature Order encoded
+addNet DirectionNet
+
+# input groups
+addGroup Shape 7 INPUT
+#Square Cylinder Triangle Diamond Circle Heart Cross
+addGroup Color 7 INPUT
+#Red Purple Green Yellow Blue Orange Pink
+addGroup Feature 5 INPUT
+#Diamond Circle Square Cylinder Cross
+
+# hidden group
+addGroup hidden 5
+
+# output groups
+addGroup ShapeOutput 7 OUTPUT
+addGroup ColorOutput 7 OUTPUT
+addGroup FeatureOutput 5 OUTPUT
+addGroup Conclusion 1 OUTPUT
+
+
+# connect the groups
+connectGroups {Shape Color Feature} hidden {ShapeOutput ColorOutput FeatureOutput Conclusion}
+
+# training examples
+loadExamples condition1_static.ex
+loadExamples condition1_causal.ex
+loadExamples condition1_SOCtest.ex
+loadExamples condition1_DIRtest.ex
+#loadExamples condition2_static.ex
+#loadExamples condition2_causal.ex
+#loadExamples condition2_SOCtest.ex
+#loadExamples condition2_DIRtest.ex
+#loadExamples condition3_static.ex
+#loadExamples condition3_causal.ex
+#loadExamples condition3_SOCtest.ex
+#loadExamples condition3_DIRtest.ex
+#loadExamples condition4_static.ex
+#loadExamples condition4_causal.ex
+#loadExamples condition4_SOCtest.ex
+#loadExamples condition4_DIRtest.ex
+
+# set learning and display parameters
+setObj learningRate 0.08
+setObj momentum	    0.9
+setObj batchSize    0
+setObj numUpdates   100
+setObj reportInterval 1
+setObj unitCellSize 40
+setObj linkCellSize 10
+
+resetPlot
+plotRow 2 b 2 n output 1
+plotRow 2 b 1 n hidden 4
+plotRow 2 b 2 n input 2
+drawUnits
+viewUnits
