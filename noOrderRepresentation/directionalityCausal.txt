@@ -50,8 +50,8 @@ setObj unitCellSize 40
 setObj linkCellSize 10
 
 resetPlot
-plotRow 2 b 2 n output 1
-plotRow 2 b 1 n hidden 4
-plotRow 2 b 2 n input 2
-drawUnits
+plotRow 3 b 5 n Conclusion 1
+plotRow 4 b 1 n ShapeOutput 7 b 1 n ColorOutput 7 b 1 n FeatureOutput 5
+plotRow 4 b 4 n hidden 5
+plotRow 5 b 1 n Shape 7 b 1 n Color 7 b 1 n Feature 5
 viewUnits
