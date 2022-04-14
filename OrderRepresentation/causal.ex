@@ -1,3 +1,4 @@
+defT:-
 #Red Square + Purple Diamond
 I:
 (ShapeONE)

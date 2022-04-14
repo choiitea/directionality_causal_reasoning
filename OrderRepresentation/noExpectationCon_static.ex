@@ -1,4 +1,6 @@
 #frequency 50:50
+defT:-
+
 #Red Square + Purple Diamond
 freq: 50
 I:
