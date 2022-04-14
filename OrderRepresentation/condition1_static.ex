@@ -1,7 +1,7 @@
 #frequency 50:50
 #Red Square + Purple Diamond
-I:
 freq: 50
+I:
 (ShapeONE)
 1 0 0 0 0 0 0 1 0
 (Color)
@@ -18,8 +18,8 @@ T:
 ;
 
 #Purple Diamond + Red Square
-I:
 freq: 50
+I:
 (ShapeONE)
 0 0 0 1 0 0 0 1 0
 (Color)
@@ -36,8 +36,8 @@ T:
 ;
 
 #Green Cylinder + Yellow Circle
-I:
 freq: 50
+I:
 (ShapeONE)
 0 1 0 0 0 0 0 1 0
 (Color)
@@ -54,8 +54,8 @@ T:
 ;
 
 #Yellow Circle + Green Cylinder
-I:
 freq: 50
+I:
 (ShapeONE)
 0 0 0 0 1 0 0 1 0
 (Color)

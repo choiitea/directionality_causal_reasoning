@@ -1,5 +1,3 @@
-#Square Cylinder Triangle Diamond Circle Heart Cross Base Feature
-
 # Blue Triangle + Purple Diamond [SOC consistent]
 I:
 (ShapeONE)

@@ -1,5 +1,5 @@
 # Network without explicit Shape-Feature Order encoded
-addNet DirectionNet
+addNet OrderDirectionNet
 
 # input groups
 addGroup ShapeONE 9 INPUT
