@@ -1,8 +1,9 @@
-#frequency 75:25
+#frequency 8:2
 defT:-
 
 #Red Square + Purple Diamond
-freq: 75
+freq: 8
+name: "Red Square + Purple Diamond"
 I:
 (ShapeONE)
 1 0 0 0 0 0 0 1 0
@@ -20,7 +21,8 @@ T:
 ;
 
 #Purple Diamond + Red Square
-freq: 25
+freq: 2
+name: "Purple Diamond + Red Square"
 I:
 (ShapeONE)
 0 0 0 1 0 0 0 1 0
@@ -38,7 +40,8 @@ T:
 ;
 
 #Green Cylinder + Yellow Circle
-freq: 75
+freq: 8
+name: "Green Cylinder + Yellow Circle"
 I:
 (ShapeONE)
 0 1 0 0 0 0 0 1 0
@@ -56,7 +59,8 @@ T:
 ;
 
 #Yellow Circle + Green Cylinder
-freq: 25
+freq: 2
+name: "Yellow Circle + Green Cylinder"
 I:
 (ShapeONE)
 0 0 0 0 1 0 0 1 0

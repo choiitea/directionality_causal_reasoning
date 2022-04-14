@@ -1,4 +1,5 @@
 # Blue Triangle + Purple Diamond [SOC consistent]
+name: "Blue Triangle + Purple Diamond [SOC consistent]"
 I:
 (ShapeONE)
 0 0 1 0 0 0 0 1 0
@@ -18,6 +19,7 @@ T:
 ;
 
 # Purple Diamond + Red Square [DIR Inconsistent]
+name: "Purple Diamond + Red Square [DIR Inconsistent]"
 I:
 (ShapeONE)
 0 0 0 1 0 0 0 1 0

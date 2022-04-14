@@ -1,5 +1,6 @@
 defT:-
-#Red Square + Purple Diamond
+#Red Square
+name: "Red Square"
 I:
 (ShapeONE)
 1 0 0 0 0 0 0 1 0
@@ -14,7 +15,8 @@ T:
 1
 ;
 
-#Green Cylinder + Yellow Circle
+#Green Cylinder
+name: "Green Cylinder"
 I:
 (ShapeONE)
 0 1 0 0 0 0 0 1 0
