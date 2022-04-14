@@ -15,6 +15,7 @@ T:
 0 0 0 1 0 0 0 0 1
 (Conclusion)
 1
+;
 
 # Purple Diamond + Red Square [DIR Inconsistent]
 I:
