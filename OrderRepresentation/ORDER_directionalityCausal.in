@@ -24,10 +24,11 @@ addGroup Conclusion 1 OUTPUT
 connectGroups {ShapeONE Color ShapeTWO} hidden {ShapeONEOutput ColorOutput ShapeTWOOutput Conclusion}
 
 # training examples
-loadExamples condition1_static.ex
-loadExamples condition1_causal.ex
-loadExamples condition1_SOCtest.ex
-loadExamples condition1_DIRtest.ex
+loadExamples noExpectationCon_static.ex
+loadExamples ExpectationCon_static.ex
+loadExamples causal.ex
+loadExamples SOCtest.ex
+loadExamples DIRtest.ex
 
 # set learning and display parameters
 setObj learningRate 0.08
