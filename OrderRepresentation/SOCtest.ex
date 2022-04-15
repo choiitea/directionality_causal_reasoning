@@ -26,7 +26,7 @@ I:
 0 0 1 0 0 0 0 1 0
 (Color)
 0 0 0 0 1 0 0
-(ShapeTWOO)
+(ShapeTWO)
 0 0 0 0 1 0 0 0 1
 T:
 (ShapeONEOutput)
