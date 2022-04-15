@@ -24,8 +24,9 @@ addGroup Conclusion 1 OUTPUT
 connectGroups {ShapeONE Color ShapeTWO} hidden {ShapeONEOutput ColorOutput ShapeTWOOutput Conclusion}
 
 # training examples
-loadExamples noExpectationCon_static.ex
-loadExamples ExpectationCon_static.ex
+loadExamples SplitExpectation_static.ex
+loadExamples WeakExpectation_static.ex
+loadExamples noInverseExpectation_static.ex
 loadExamples causal.ex
 loadExamples SOCtest.ex
 loadExamples DIRtest.ex
