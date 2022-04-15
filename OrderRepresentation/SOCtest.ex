@@ -26,8 +26,8 @@ I:
 0 0 1 0 0 0 0 1 0
 (Color)
 0 0 0 0 1 0 0
-(Feature)
-0 1 0 0 0
+(ShapeTWOO)
+0 0 0 0 1 0 0 0 1
 T:
 (ShapeONEOutput)
 0 0 1 0 0 0 0 1 0
