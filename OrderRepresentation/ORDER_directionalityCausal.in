@@ -30,6 +30,7 @@ loadExamples noInverseExpectation_static.ex
 loadExamples causal.ex
 loadExamples SOCtest.ex
 loadExamples DIRtest.ex
+loadExamples ControlledDIRtest.ex
 
 # set learning and display parameters
 setObj learningRate 0.08
