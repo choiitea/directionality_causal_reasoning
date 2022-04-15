@@ -1,3 +1,4 @@
+# There cannot be expectation for inverse construction because never exposed. 
 defT:-
 
 #Red Square + Purple Diamond
@@ -20,7 +21,7 @@ T:
 ;
 
 #Green Cylinder + Yellow Circle
-freq: 8
+freq: 10
 name: "Green Cylinder + Yellow Circle"
 I:
 (ShapeONE)
