@@ -2,26 +2,24 @@
 addNet OrderDirectionNet
 
 # input groups
-addGroup ShapeONE 9 INPUT
-#Square Cylinder Triangle Diamond Circle Heart Cross Base Feature
-addGroup Color 7 INPUT
-#Red Purple Green Yellow Blue Orange Pink
-addGroup ShapeTWO 9 INPUT
-#Square Cylinder Triangle Diamond Circle Heart Cross Base Feature
+addGroup ShapeONE 7 INPUT
+#Square Cylinder Triangle Diamond Circle Heart Cross
+addGroup ShapeTWO 7 INPUT
+#Square Cylinder Triangle Diamond Circle Heart Cross
 
+# NOTE: Removed Color as an Input Group b/c each shape is tied to novel colors
 
 # hidden group
 addGroup hidden 5
 
 # output groups
-addGroup ShapeONEOutput 9 OUTPUT
-addGroup ColorOutput 7 OUTPUT
-addGroup ShapeTWOOutput 9 OUTPUT
+addGroup ShapeONEOutput 7 OUTPUT
+addGroup ShapeTWOOutput 7 OUTPUT
 addGroup Conclusion 1 OUTPUT
 
 
 # connect the groups
-connectGroups {ShapeONE Color ShapeTWO} hidden {ShapeONEOutput ColorOutput ShapeTWOOutput Conclusion}
+connectGroups {ShapeONE ShapeTWO} hidden {ShapeONEOutput ShapeTWOOutput Conclusion}
 
 # training examples
 loadExamples SplitExpectation_static.ex
@@ -36,14 +34,14 @@ loadExamples ControlledDIRtest.ex
 setObj learningRate 0.08
 setObj momentum	    0.9
 setObj batchSize    0
-setObj numUpdates   100
+setObj numUpdates   50
 setObj reportInterval 1
 setObj unitCellSize 40
 setObj linkCellSize 10
 
 resetPlot
 plotRow 3 b 5 n Conclusion 1
-plotRow 4 b 1 n ShapeONEOutput 9 b 1 n ColorOutput 7 b 1 n ShapeTWOOutput 9
+plotRow 4 b 1 n ShapeONEOutput 7 b 1 n ShapeTWOOutput 7
 plotRow 4 b 4 n hidden 5
-plotRow 5 b 1 n ShapeONE 9 b 1 n Color 7 b 1 n ShapeTWO 9
+plotRow 4 b 1 n ShapeONE 7 b 1 n ShapeTWO 7
 viewUnits
