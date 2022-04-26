@@ -1,3 +1,5 @@
+defT:-
+
 #Red Square + Purple Diamond
 I:
 (Shape)

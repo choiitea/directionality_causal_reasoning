@@ -1,3 +1,5 @@
+defT:-
+
 #Red Square + Purple Diamond
 #one-hot encoding vs. pattern of distributed activity
 I:
