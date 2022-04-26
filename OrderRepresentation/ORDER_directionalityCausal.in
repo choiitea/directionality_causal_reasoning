@@ -26,6 +26,7 @@ loadExamples SplitExpectation_static.ex
 loadExamples WeakExpectation_static.ex
 loadExamples noInverseExpectation_static.ex
 loadExamples causal.ex
+loadExamples causal_split.ex
 loadExamples SOCtest.ex
 loadExamples DIRtest.ex
 loadExamples ControlledDIRtest.ex
