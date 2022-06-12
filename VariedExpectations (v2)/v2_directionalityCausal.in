@@ -27,6 +27,8 @@ connectGroups {ShapeONE ColorONE ShapeTWO ColorTWO} hidden {ShapeONEOutput Color
 # training examples
 loadExamples SplitExpectation_static.ex
 loadExamples noInverseExpectation_static.ex
+loadExamples StrongNormalExpectation_static.ex
+loadExamples StrongInverseExpectation_static.ex
 loadExamples causal.ex
 loadExamples SOCtest.ex
 loadExamples DIRtest.ex
