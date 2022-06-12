@@ -40,12 +40,14 @@ setObj momentum	    0.9
 setObj batchSize    0
 setObj numUpdates   50
 setObj reportInterval 1
-setObj unitCellSize 40
+setObj unitCellSize 30
 setObj linkCellSize 10
 
 resetPlot
 plotRow 3 b 5 n Conclusion 1
-plotRow 4 b 1 n ShapeONEOutput 7 b 1 n ColorONEOutput 7 b 1 n ShapeTWOOutput 7 b 1 n ColorTWOOutput 7
+plotRow 2 b 1 n ShapeTWOOutput 7 b 1 n ColorTWOOutput 7
+plotRow 2 b 1 n ShapeONEOutput 7 b 1 n ColorONEOutput 7
 plotRow 4 b 4 n hidden 5
-plotRow 4 b 1 n ShapeONE 7 b 1 n ColorONE 7 b 1 n ShapeTWO 7 b 1 n ColorTWO 7
+plotRow 2 b 1 n ShapeTWO 7 b 1 n ColorTWO 7
+plotRow 2 b 1 n ShapeONE 7 b 1 n ColorONE 7
 viewUnits
