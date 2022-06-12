@@ -1,32 +1,33 @@
-# Network without explicit Shape-Feature Order encoded
-addNet OrderDirectionNet
+addNet OrderDirectionNetV2
 
 # input groups
 addGroup ShapeONE 7 INPUT
 #Square Cylinder Triangle Diamond Circle Heart Cross
+addGroup ColorONE 7 INPUT
+#Red Green Purple Yellow Blue Orange Pink
 addGroup ShapeTWO 7 INPUT
 #Square Cylinder Triangle Diamond Circle Heart Cross
-
-# NOTE: Removed Color as an Input Group b/c each shape is tied to novel colors
+addGroup ColorTWO 7 INPUT
+#Red Green Purple Yellow Blue Orange Pink
 
 # hidden group
 addGroup hidden 5
 
 # output groups
 addGroup ShapeONEOutput 7 OUTPUT
+addGroup ColorONEOutput 7 OUTPUT
 addGroup ShapeTWOOutput 7 OUTPUT
+addGroup ColorTWOOutput 7 OUTPUT
 addGroup Conclusion 1 OUTPUT
 
 
 # connect the groups
-connectGroups {ShapeONE ShapeTWO} hidden {ShapeONEOutput ShapeTWOOutput Conclusion}
+connectGroups {ShapeONE ColorONE ShapeTWO ColorTWO} hidden {ShapeONEOutput ColorONEOutput ShapeTWOOutput ColorTWOOutput Conclusion}
 
 # training examples
 loadExamples SplitExpectation_static.ex
-loadExamples WeakExpectation_static.ex
 loadExamples noInverseExpectation_static.ex
 loadExamples causal.ex
-loadExamples causal_split.ex
 loadExamples SOCtest.ex
 loadExamples DIRtest.ex
 loadExamples ControlledDIRtest.ex
@@ -42,7 +43,7 @@ setObj linkCellSize 10
 
 resetPlot
 plotRow 3 b 5 n Conclusion 1
-plotRow 4 b 1 n ShapeONEOutput 7 b 1 n ShapeTWOOutput 7
+plotRow 4 b 1 n ShapeONEOutput 7 b 1 n ColorONEOutput 7 b 1 n ShapeTWOOutput 7 b 1 n ColorTWOOutput 7
 plotRow 4 b 4 n hidden 5
-plotRow 4 b 1 n ShapeONE 7 b 1 n ShapeTWO 7
+plotRow 4 b 1 n ShapeONE 7 b 1 n ColorONE 7 b 1 n ShapeTWO 7 b 1 n ColorTWO 7
 viewUnits
