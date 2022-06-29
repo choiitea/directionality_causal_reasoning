@@ -1,8 +1,8 @@
-#frequency 5:5 ratio
+#frequency 5:5 ratio - normalized to add up to 1
 defT:-
 
 #Red Square + Purple Diamond
-freq: .5
+freq: .25
 name: "Red Square + Purple Diamond"
 I:
 (ShapeONE)
@@ -17,7 +17,7 @@ T:
 ;
 
 #Purple Diamond + Red Square
-freq: .5
+freq: .25
 name: "Purple Diamond + Red Square"
 I:
 (ShapeONE)
@@ -32,7 +32,7 @@ T:
 ;
 
 #Green Cylinder + Yellow Circle
-freq: .5
+freq: .25
 name: "Green Cylinder + Yellow Circle"
 I:
 (ShapeONE)
@@ -47,7 +47,7 @@ T:
 ;
 
 #Yellow Circle + Green Cylinder
-freq: .5
+freq: .25
 name: "Yellow Circle + Green Cylinder"
 I:
 (ShapeONE)

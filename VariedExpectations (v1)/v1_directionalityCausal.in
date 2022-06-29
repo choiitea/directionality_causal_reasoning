@@ -22,12 +22,13 @@ addGroup Conclusion 1 OUTPUT
 connectGroups {ShapeONE ShapeTWO} hidden {ShapeONEOutput ShapeTWOOutput Conclusion}
 
 # training examples
-loadExamples SplitExpectation_static.ex
-loadExamples WeakExpectation_static.ex
+loadExamples SplitExpectation_static.ex -exmode PROBABILISTIC
+loadExamples WeakExpectation_static.ex -exmode PROBABILISTIC
 loadExamples noInverseExpectation_static.ex
-loadExamples StrongInverseExpectation_static.ex
+loadExamples StrongInverseExpectation_static.ex -exmode PROBABILISTIC
 loadExamples causal.ex
-loadExamples causal_BaseANDInternal.ex
+loadExamples causal_BaseANDInternal_split.ex -exmode PROBABILISTIC
+loadExamples causal_BaseANDInternal_strongInverse.ex -exmode PROBABILISTIC
 loadExamples SOCtest.ex
 loadExamples DIRtest.ex
 loadExamples ControlledDIRtest.ex
