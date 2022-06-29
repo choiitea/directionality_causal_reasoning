@@ -25,6 +25,7 @@ connectGroups {ShapeONE ShapeTWO} hidden {ShapeONEOutput ShapeTWOOutput Conclusi
 loadExamples SplitExpectation_static.ex
 loadExamples WeakExpectation_static.ex
 loadExamples noInverseExpectation_static.ex
+loadExamples StrongInverseExpectation_static.ex
 loadExamples causal.ex
 loadExamples causal_BaseANDInternal.ex
 loadExamples SOCtest.ex

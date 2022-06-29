@@ -1,6 +1,6 @@
 defT:-
 #Red Square
-name: "Red Square"
+name: "Red Square 1"
 I:
 (ShapeONE)
 1 0 0 0 0 0 0
@@ -11,8 +11,20 @@ T:
 1
 ;
 
+#Red Square
+name: "Red Square 2"
+I:
+(ShapeTWO)
+1 0 0 0 0 0 0
+T:
+(ShapeTWOOutput)
+1 0 0 0 0 0 0
+(Conclusion)
+1
+;
+
 #Green Cylinder
-name: "Green Cylinder"
+name: "Green Cylinder 1"
 I:
 (ShapeONE)
 0 1 0 0 0 0 0
@@ -23,26 +35,14 @@ T:
 0
 ;
 
-#Purple Diamond
-name: "Purple Diamond"
+#Green Cylinder
+name: "Green Cylinder 2"
 I:
-(ShapeONE)
-0 0 0 1 0 0 0
+(ShapeTWO)
+0 1 0 0 0 0 0
 T:
-(ShapeONEOutput)
-0 0 0 1 0 0 0
-(Conclusion)
-1
-;
-
-#Yellow Circle
-name: "Yellow Circle"
-I:
-(ShapeONE)
-0 0 0 0 1 0 0
-T:
-(ShapeONEOutput)
-0 0 0 0 1 0 0
+(ShapeTWOOutput)
+0 1 0 0 0 0 0
 (Conclusion)
 0
 ;
