@@ -29,6 +29,7 @@ loadExamples StrongInverseExpectation_static.ex -exmode PROBABILISTIC
 loadExamples causal.ex
 loadExamples causal_BaseANDInternal_split.ex -exmode PROBABILISTIC
 loadExamples causal_BaseANDInternal_strongInverse.ex -exmode PROBABILISTIC
+loadExamples causal_tempSoln_strongInverse.ex
 loadExamples SOCtest.ex
 loadExamples DIRtest.ex
 loadExamples ControlledDIRtest.ex
