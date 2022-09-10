@@ -22,14 +22,16 @@ addGroup Conclusion 1 OUTPUT
 connectGroups {ShapeONE ShapeTWO} hidden {ShapeONEOutput ShapeTWOOutput Conclusion}
 
 # training examples
-loadExamples SplitExpectation_static.ex -exmode PROBABILISTIC
-loadExamples WeakExpectation_static.ex -exmode PROBABILISTIC
+loadExamples SplitExpectation_static.ex 
+loadExamples notFreqRatio_SplitExpectation_static.ex
+loadExamples WeakExpectation_static.ex 
 loadExamples noInverseExpectation_static.ex
-loadExamples StrongInverseExpectation_static.ex -exmode PROBABILISTIC
+loadExamples StrongInverseExpectation_static.ex 
 loadExamples causal.ex
-loadExamples causal_BaseANDInternal_split.ex -exmode PROBABILISTIC
-loadExamples causal_BaseANDInternal_strongInverse.ex -exmode PROBABILISTIC
-loadExamples causal_tempSoln_strongInverse.ex
+loadExamples causal_freqRatio_split.ex
+# loadExamples causal_split_2EventPerEx.ex -exmode PROBABILISTIC
+loadExamples causal_BaseANDInternal_split.ex 
+loadExamples causal_BaseANDInternal_strongInverse.ex 
 loadExamples SOCtest.ex
 loadExamples DIRtest.ex
 loadExamples ControlledDIRtest.ex
@@ -49,3 +51,42 @@ plotRow 4 b 1 n ShapeONEOutput 7 b 1 n ShapeTWOOutput 7
 plotRow 4 b 4 n hidden 5
 plotRow 4 b 1 n ShapeONE 7 b 1 n ShapeTWO 7
 viewUnits
+
+proc printActivation {group unit} { 
+	format "%.3f " [getObj $unit.output] 
+} 
+
+
+proc saveActivations {fname groups} { 
+    set outfile [open $fname a] 
+    printUnitValues -$outfile printActivation $groups 
+    puts $outfile "\n" nonewline 
+    close $outfile 
+}
+
+proc testAllFinalActs {fname groups} { 
+    resetExampleSet [getObj testingSet.name] 
+    set nex [getObj testingSet.numExamples] 
+    for {set i 0} {$i < $nex} {incr i} {
+	doExample -set [getObj testingSet.name]
+	saveActivations $fname $groups
+    }
+}
+
+
+proc testNetwork {n train1 trainNum1 train2 trainNum2 test1 test2 test3 fname groups} {
+	for {set i 0} {$i < $n} {incr i} {
+		resetNet
+			useTrainingSet $train1
+			train $trainNum1
+            useTrainingSet $train2
+			train $trainNum2
+			useTestingSet $test1
+            testAllFinalActs $fname $groups
+            useTestingSet $test2
+            testAllFinalActs $fname $groups
+            useTestingSet $test3
+			testAllFinalActs $fname $groups	
+				
+	}
+}

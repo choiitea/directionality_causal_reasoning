@@ -37,9 +37,12 @@ loadExamples SplitExpectation_static.ex
 loadExamples StrongInverseExpectation_static.ex
 # causal training examples
 loadExamples causal_noInverse.ex
-loadExamples causal_weakInverse.ex
-loadExamples causal_split.ex
-loadExamples causal_strongInverse.ex
+loadExamples causal_weakInverse_a.ex
+loadExamples causal_weakInverse_b.ex
+loadExamples causal_split_a.ex
+loadExamples causal_split_b.ex
+loadExamples causal_strongInverse_a.ex
+loadExamples causal_strongInverse_b.ex
 # test examples
 loadExamples SOCtest.ex
 loadExamples DIRtest.ex

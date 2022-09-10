@@ -1,7 +1,5 @@
-defT:-
-
 name: "Red Square + Purple Diamond 1"
-freq: 0.125
+freq: 0.2
 I:
 (ShapeONE)
 1 0 0 0 0 0 0
@@ -23,7 +21,7 @@ T:
 ;
 
 name: "Red Square + Purple Diamond 2"
-freq: 0.125
+freq: 0.2
 I:
 (ShapeONE)
 0 0 0 1 0 0 0
@@ -45,7 +43,7 @@ T:
 ;
 
 name: "Green Cylinder + Yellow Circle 1"
-freq: 0.125
+freq: 0.2
 I:
 (ShapeONE)
 0 1 0 0 0 0 0
@@ -67,7 +65,7 @@ T:
 ;
 
 name: "Green Cylinder + Yellow Circle 2"
-freq: 0.125
+freq: 0.2
 I: 
 (ShapeONE)
 0 0 0 0 1 0 0
@@ -89,7 +87,7 @@ T:
 ;
 
 name: "Purple Diamond + Red Square 1"
-freq: 0.125
+freq: 0.05
 I:
 (ShapeONE)
 0 0 0 1 0 0 0
@@ -111,7 +109,7 @@ T:
 ;
 
 name: "Purple Diamond + Red Square 2"
-freq: 0.125
+freq: 0.05
 I:
 (ShapeONE)
 1 0 0 0 0 0 0
@@ -133,7 +131,7 @@ T:
 ;
 
 name: "Yellow Circle + Green Cylinder 1"
-freq: 0.125
+freq: 0.05
 I:
 (ShapeONE)
 0 0 0 0 1 0 0
@@ -155,7 +153,7 @@ T:
 ;
 
 name: "Yellow Circle + Green Cylinder 2"
-freq: 0.125
+freq: 0.05
 I:
 (ShapeONE)
 0 1 0 0 0 0 0

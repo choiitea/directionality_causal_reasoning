@@ -1,6 +1,7 @@
 defT:-
 
 #Red Square
+freq: .25
 name: "Red Square 1"
 I:
 (ShapeONE)
@@ -12,7 +13,21 @@ T:
 1
 ;
 
+#Green Cylinder
+freq: .25
+name: "Green Cylinder 1"
+I:
+(ShapeONE)
+0 1 0 0 0 0 0
+T:
+(ShapeONEOutput)
+0 1 0 0 0 0 0
+(Conclusion)
+0
+;
+
 #Red Square
+freq: .25
 name: "Red Square 2"
 I:
 (ShapeTWO)
@@ -25,18 +40,7 @@ T:
 ;
 
 #Green Cylinder
-name: "Green Cylinder 1"
-I:
-(ShapeONE)
-0 1 0 0 0 0 0
-T:
-(ShapeONEOutput)
-0 1 0 0 0 0 0
-(Conclusion)
-0
-;
-
-#Green Cylinder
+freq: .25
 name: "Green Cylinder 2"
 I:
 (ShapeTWO)

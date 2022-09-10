@@ -1,4 +1,4 @@
-addNet OrderDirectionNetV2
+addNet OrderDirectionNetV3
 
 # input groups
 addGroup ShapeONE 7 INPUT
@@ -24,10 +24,6 @@ addGroup Conclusion 1 OUTPUT
 
 
 # connect the groups
-#connectGroups ShapeONE PositionONE 
-#connectGroups ShapeTWO PositionTWO 
-#connectGroups ShapeONEOutput PositionONEOutput
-#connectGroups ShapeTWOOutput PositionTWOOutput
 connectGroups {ShapeONE PositionONE ShapeTWO PositionTWO} hidden {ShapeONEOutput PositionONEOutput ShapeTWOOutput PositionTWOOutput Conclusion}
 
 # static training examples
