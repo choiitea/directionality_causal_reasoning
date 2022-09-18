@@ -1,0 +1,103 @@
+addNet OrderDirectionNetV2
+
+# input groups
+addGroup ShapeONE 7 INPUT
+#Square Cylinder Triangle Diamond Circle Heart Cross
+addGroup PositionONE 2 INPUT
+#Base Feature
+addGroup ShapeTWO 7 INPUT
+#Square Cylinder Triangle Diamond Circle Heart Cross
+addGroup PositionTWO 2 INPUT
+#Base Feature
+
+# NOTE: Removed Color as an Input Group b/c each shape is tied to novel colors
+
+# hidden group
+addGroup hidden 7
+
+# output groups
+addGroup ShapeONEOutput 7 OUTPUT
+addGroup PositionONEOutput 2 OUTPUT
+addGroup ShapeTWOOutput 7 OUTPUT
+addGroup PositionTWOOutput 2 OUTPUT
+addGroup Conclusion 1 OUTPUT
+
+
+# connect the groups
+connectGroups {ShapeONE PositionONE ShapeTWO PositionTWO} hidden {ShapeONEOutput PositionONEOutput ShapeTWOOutput PositionTWOOutput Conclusion}
+
+# static training examples
+loadExamples noInverseExpectation_static.ex
+loadExamples WeakInverseExpectation_static.ex
+loadExamples SplitExpectation_static.ex
+loadExamples StrongInverseExpectation_static.ex
+# causal training examples
+loadExamples causal_noInverse.ex
+loadExamples causal_weakInverse_a.ex
+loadExamples causal_weakInverse_b.ex
+loadExamples causal_split_a.ex
+loadExamples causal_split_b.ex
+loadExamples causal_strongInverse_a.ex
+loadExamples causal_strongInverse_b.ex
+# test examples
+loadExamples SOCtest.ex
+loadExamples DIRtest.ex
+loadExamples ControlledDIRtest.ex
+
+# set learning and display parameters
+setObj learningRate 0.08
+setObj momentum	    0.9
+setObj batchSize    0
+setObj numUpdates   50
+setObj reportInterval 1
+setObj unitCellSize 30
+setObj linkCellSize 10
+setObj weightDecay 0.001
+
+resetPlot
+plotRow 3 b 5 n Conclusion 1
+plotRow 2 b 1 n ShapeONEOutput 7 b 1 n ShapeTWOOutput 7
+plotRow 4 b 4 n PositionONEOutput 2 b 4 n PositionTWOOutput 2
+plotRow 4 b 4 n hidden 7
+plotRow 2 b 1 n ShapeONE 7 b 1 n ShapeTWO 7
+plotRow 4 b 4 n PositionONE 2 b 4 n PositionTWO 2
+viewUnits
+
+
+proc printActivation {group unit} { 
+	format "%.3f " [getObj $unit.output] 
+} 
+
+
+proc saveActivations {fname groups} { 
+    set outfile [open $fname a] 
+    printUnitValues -$outfile printActivation $groups 
+    puts $outfile "\n" nonewline 
+    close $outfile 
+}
+
+proc testAllFinalActs {fname groups} { 
+    resetExampleSet [getObj testingSet.name] 
+    set nex [getObj testingSet.numExamples] 
+    for {set i 0} {$i < $nex} {incr i} {
+	doExample -set [getObj testingSet.name]
+	saveActivations $fname $groups
+    }
+}
+
+
+proc testNetwork {n train1 trainNum1 train2 trainNum2 test1 test2 test3 fname groups} {
+	for {set i 0} {$i < $n} {incr i} {
+		resetNet
+			useTrainingSet $train1
+			train $trainNum1
+            useTrainingSet $train2
+			train $trainNum2
+			useTestingSet $test1
+            testAllFinalActs $fname $groups
+            useTestingSet $test2
+            testAllFinalActs $fname $groups
+            useTestingSet $test3
+			testAllFinalActs $fname $groups			
+	}
+}
