@@ -13,7 +13,7 @@ addGroup PositionTWO 2 INPUT
 # NOTE: Removed Color as an Input Group b/c each shape is tied to novel colors
 
 # hidden group
-addGroup hidden 7
+addGroup hidden 5
 
 # output groups
 addGroup ShapeONEOutput 7 OUTPUT
@@ -24,6 +24,7 @@ addGroup Conclusion 1 OUTPUT
 
 
 # connect the groups
+
 connectGroups {ShapeONE PositionONE ShapeTWO PositionTWO} hidden {ShapeONEOutput PositionONEOutput ShapeTWOOutput PositionTWOOutput Conclusion}
 
 # static training examples
@@ -45,19 +46,20 @@ loadExamples DIRtest.ex
 loadExamples ControlledDIRtest.ex
 
 # set learning and display parameters
-setObj learningRate 0.08
+setObj learningRate 0.06
 setObj momentum	    0.9
 setObj batchSize    0
 setObj numUpdates   50
 setObj reportInterval 1
 setObj unitCellSize 30
 setObj linkCellSize 10
+setObj weightDecay 0.001
 
 resetPlot
 plotRow 3 b 5 n Conclusion 1
 plotRow 2 b 1 n ShapeONEOutput 7 b 1 n ShapeTWOOutput 7
 plotRow 4 b 4 n PositionONEOutput 2 b 4 n PositionTWOOutput 2
-plotRow 4 b 4 n hidden 7
+plotRow 4 b 4 n hidden 5
 plotRow 2 b 1 n ShapeONE 7 b 1 n ShapeTWO 7
 plotRow 4 b 4 n PositionONE 2 b 4 n PositionTWO 2
 viewUnits

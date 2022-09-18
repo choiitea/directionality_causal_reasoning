@@ -45,13 +45,14 @@ loadExamples DIRtest.ex
 loadExamples ControlledDIRtest.ex
 
 # set learning and display parameters
-setObj learningRate 0.08
+setObj learningRate 0.06
 setObj momentum	    0.9
 setObj batchSize    0
 setObj numUpdates   50
 setObj reportInterval 1
 setObj unitCellSize 30
 setObj linkCellSize 10
+setObj weightDecay 0.001
 
 resetPlot
 plotRow 3 b 5 n Conclusion 1
