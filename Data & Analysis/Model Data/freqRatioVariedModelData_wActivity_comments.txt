@@ -1,0 +1,16 @@
+Model Data v1
+Static Training - No Inverse, Weak Inverse Expectation, Split Expectation, Strong Inverse Expectation
+Causal Training - causal (causal shape only trained in ShapeONE)
+50 Epochs in training
+
+Model Choice Notation
+1 = SOC / Order consistent
+0 = Both
+2 = Chose Inverse / Order Inconsistent Construction but not Normal / SOC Consistent / Order Consistent Construction
+999 = under trained? low (<0.5) activation level in both objects
+
+111 = SOC and Order consistent response
+101 = SOC, response on first order correlation, order consistent
+110 = ? Not sure how to interpret 110.
+100 = SOC pass, Order agnostic
+

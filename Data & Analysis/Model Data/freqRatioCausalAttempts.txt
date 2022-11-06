@@ -1,0 +1,30 @@
+----------- UPDATE 1
+changes made to causal files ---- for weakInverse, red square 2 changed to 0, for strongInverse, red square 1 changed to 0
+ -- succeeded in getting weak_inverse to more or less replicate no_inverse
+ -- but no meaningful difference between split and strong inverse... 
+----------- UPDATE 2
+changes to causal files ---- 
+	currently no position information provided to weakInverse, split, strongInverse
+	changed to provide more specific position information during causal training
+	-- caused weak_inverse and strong_inverse to massively fail test_choice
+	-- weak_inverse DIR and CONTR no longer replicate no_inverse, but flips
+why though...? 
+removed freq for weakInverse causal. does not work. 
+	
+----------- UPDATE 3
+changes made to causal_split - split causal training to 2 parts - a & b
+
+testNetwork 30 noInverseExpectation_static 50 causal_noInverse 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion
+testNetwork 30 WeakInverseExpectation_static 50 causal_weakInverse 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion
+testNetwork 15 SplitExpectation_static 50 causal_split_a 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion
+testNetwork 15 SplitExpectation_static 50 causal_split_b 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion
+testNetwork 30 StrongInverseExpectation_static 50 causal_strongInverse 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion 
+
+----------- UPDATE 4
+testNetwork 30 noInverseExpectation_static 50 causal_noInverse 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion
+testNetwork 24 WeakInverseExpectation_static 50 causal_weakInverse_a 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion
+testNetwork 6 WeakInverseExpectation_static 50 causal_weakInverse_b 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion
+testNetwork 15 SplitExpectation_static 50 causal_split_a 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion
+testNetwork 15 SplitExpectation_static 50 causal_split_b 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion
+testNetwork 6 StrongInverseExpectation_static 50 causal_strongInverse_a 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion
+testNetwork 24 StrongInverseExpectation_static 50 causal_strongInverse_b 50 SOCtest DIRtest ControlledDIRtest combinedModel_data.out Conclusion

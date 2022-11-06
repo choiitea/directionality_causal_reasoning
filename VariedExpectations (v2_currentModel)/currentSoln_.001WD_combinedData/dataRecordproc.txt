@@ -1,0 +1,7 @@
+testNetwork 30 noInverseExpectation_static 50 causal_noInverse 50 SOCtest DIRtest ControlledDIRtest combinedModel_.001WD_data.out Conclusion
+testNetwork 24 WeakInverseExpectation_static 50 causal_weakInverse_a 50 SOCtest DIRtest ControlledDIRtest combinedModel_.001WD_data.out Conclusion
+testNetwork 6 WeakInverseExpectation_static 50 causal_weakInverse_b 50 SOCtest DIRtest ControlledDIRtest combinedModel_.001WD_data.out Conclusion
+testNetwork 15 SplitExpectation_static 50 causal_split_a 50 SOCtest DIRtest ControlledDIRtest combinedModel_.001WD_data.out Conclusion
+testNetwork 15 SplitExpectation_static 50 causal_split_b 50 SOCtest DIRtest ControlledDIRtest combinedModel_.001WD_data.out Conclusion
+testNetwork 6 StrongInverseExpectation_static 50 causal_strongInverse_a 50 SOCtest DIRtest ControlledDIRtest combinedModel_.001WD_data.out Conclusion
+testNetwork 24 StrongInverseExpectation_static 50 causal_strongInverse_b 50 SOCtest DIRtest ControlledDIRtest combinedModel_.001WD_data.out Conclusion
