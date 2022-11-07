@@ -35,10 +35,17 @@ options(scipen=9999)
 ######################
 # load data
 D = read.csv(file.choose(), header = TRUE)
-D = na.omit(D)
+
+# check to see if there're any "NAs"
+is.na(D)
 
 # get the structure of the data
 str(D)
+
+# get the names of the columns
+names(D)
+
+# look at the data
   
 # create a test_choice variable
 D$test_choice = rep(0,nrow(D))
