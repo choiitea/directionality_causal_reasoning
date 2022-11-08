@@ -284,6 +284,16 @@ glm_test_choice = glm(test_choice~1,
                            family = "binomial")
 summary(glm_test_choice)
 
+# Figure
+test_choice_barplot = ggplot(D, aes(test_choice, fill = test_choice)) 
+test_choice_barplot + geom_bar(position="dodge") +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 30)) +
+  scale_fill_manual(values=c("black","#ffc857")) +
+  theme_bw()
+
+
+
 # Conclusion: participants were significantly more likely to choose the
 # correct object than the incorrect one. This means that adults *do* have
 # access to an SOC mechanism. The data indicate that participants are 
@@ -303,6 +313,16 @@ glm_direction_choice = glm(direction_choice_lib~1,
 summary(glm_direction_choice)
 
 
+# liberal figure
+direction_choice_liberal_barplot = ggplot(D, aes(direction_choice_lib, fill = direction_choice_lib)) 
+direction_choice_liberal_barplot + geom_bar(position="dodge") +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 30)) +
+  scale_fill_manual(values=c("black","#ffc857")) +
+  theme_bw()
+
+
+
 ## conservative analyses ##
 multinom_direction_choice = multinom(direction_choice_conserv ~ 1, data = D)
 summary(multinom_direction_choice)
@@ -312,6 +332,14 @@ multinom_direction_choice_z
 multinom_direction_choice_p <- (1 - pnorm(abs(multinom_direction_choice_z), 0, 1)) * 2
 multinom_direction_choice_p
 
+
+# conservative figure
+direction_choice_conserv_barplot = ggplot(D, aes(direction_choice_conserv, fill = direction_choice_conserv)) 
+direction_choice_conserv_barplot + geom_bar(position="dodge") +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 20)) +
+  scale_fill_manual(values=c("black","#ffc857", "darkblue", "#9933FF")) +
+  theme_bw()
 
 
 
@@ -340,6 +368,15 @@ glm_control_choice = glm(control_choice_lib ~ 1,
                               data = D, family = "binomial")
 summary(glm_control_choice)
 
+# liberal figure
+control_choice_lib_barplot = ggplot(D, aes(control_choice_lib, fill = control_choice_lib)) # create the bar graph with test.trial.2 on the x-axis and measure on the y-axis
+control_choice_lib_barplot + geom_bar(position="dodge") +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 30)) +
+  scale_fill_manual(values=c("black","#ffc857")) +
+  theme_bw()
+
+
 
 ## conservative analyses ##
 table(D$control_choice_conserv)
@@ -350,6 +387,15 @@ multinom_control_choice_z <- summary(multinom_control_choice)$coefficients/summa
 multinom_control_choice_z
 multinom_control_choice_p <- (1 - pnorm(abs(multinom_control_choice_z), 0, 1)) * 2
 multinom_control_choice_p
+
+# conservative figure
+control_choice_conserv_barplot = ggplot(D, aes(control_choice_conserv, fill = control_choice_conserv)) # create the bar graph with test.trial.2 on the x-axis and measure on the y-axis
+control_choice_conserv_barplot + geom_bar(position="dodge") +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 20)) +
+  scale_fill_manual(values=c("black","#ffc857", "darkblue")) +
+  theme_bw()
+
 
 
 # Conclusion for the liberal analysis: participants were significantly more likely to show
@@ -418,6 +464,16 @@ sd(D$test_rating_correct[D$test_choice=="Correct"])
 mean(D$test_rating_correct[D$test_choice=="Incorrect"])
 sd(D$test_rating_correct[D$test_choice=="Incorrect"])
 
+# Figure
+test_rating_correct_barplot = ggplot(D, aes(test_choice, test_rating_correct, fill = test_choice)) # create the bar graph with test.trial.2 on the x-axis and measure on the y-axis
+test_rating_correct_barplot + stat_summary(fun = mean, geom = "bar", position = "dodge") + # add the bars, which represent the means and the place them side-by-side with 'dodge'
+  stat_summary(fun.data=mean_cl_boot, geom = "errorbar", position = position_dodge(width=0.90), width = 0.2) + # add errors bars
+  ylab("Rating") + # change the label of the y-axis
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 1)) +
+  scale_fill_manual(values=c("black","#ffc857")) +
+  theme_bw()
+
 # CONCLUSION:
 # This analysis indicates that those who chose the SOC object during the replication (test) trial
 # were significantly more confident in their ratings (M = 67.88, SD = 14.71) than those who chose
@@ -436,61 +492,21 @@ sd(D$test_rating_incorrect[D$test_choice=="Correct"])
 mean(D$test_rating_incorrect[D$test_choice=="Incorrect"])
 sd(D$test_rating_incorrect[D$test_choice=="Incorrect"])
 
+
+# Figure
+test_rating_incorrect_barplot = ggplot(D, aes(test_choice, test_rating_incorrect, fill = test_choice)) # create the bar graph with test.trial.2 on the x-axis and measure on the y-axis
+test_rating_incorrect_barplot + stat_summary(fun = mean, geom = "bar", position = "dodge") + # add the bars, which represent the means and the place them side-by-side with 'dodge'
+  stat_summary(fun.data=mean_cl_boot, geom = "errorbar", position = position_dodge(width=0.90), width = 0.2) + # add errors bars
+  ylab("Rating") + # change the label of the y-axis
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 1)) +
+  scale_fill_manual(values=c("black","#ffc857")) +
+  theme_bw()
+
 # CONCLUSION:
 # This analysis indicates that those who chose the SOC object during the replication (test) trial
 # were, perhaps counterintuitively, significantly *less* confident in their ratings (M = 30.38, SD = 15.99) than those who chose
 # the SOC inconsistent object (M = 47.5, SD = 26.03), F(1,30) = 4.379, p = .01. This finding makes sense given that
 # those who were incorrect were more confident in their incorrect choices, just as those who were correct (i.e., chose the correct)
 # test object were more confident in their ratings.
-
-# t-test Figure #
-# rating difference in Control Test Trial
-ggplot(D) +
-  geom_bar(aes(x = control_choice, y = control_ratingDiff, fill = control_choice), stat = "summary") +
-  theme_bw() +
-  scale_fill_manual(values= c("#66545E","#A39193","#AA6F73","#EEA990")) +
-  xlab("Test Choice for Order Consistent & Order Inconsistent") +
-  ylab("Difference in Control Test Ratings") +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),
-        legend.position="none") +
-  scale_x_discrete(drop=FALSE) +
-  scale_y_continuous(expand = c(0, 0)) + 
-  coord_cartesian(ylim=c(0, 0.7))
-
-# FIGURES #
-D$memory_check = revalue(x = as.factor(D$memory_check), 
-                         c("0" = "Memory Check Fail", "1" = "Memory Check Pass"))
-
-test_choice_plot = ggplot(D, aes(test_choice, fill = test_choice)) # THE FIRST ARGUMENT VALUES AFTER 'AES' CORRESPONDS
-test_choice_plot+geom_bar() + theme_bw() + # remove the gray background
-  scale_fill_manual(values= c("#66545E","#A39193","#AA6F73","#EEA990")) +
-  xlab("SOC Consistent & SOC Inconsistent") +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),
-        legend.position="none") +
-  scale_y_continuous(expand = c(0, 0)) + # ensure that bars hit the x-axis
-  coord_cartesian(ylim=c(0, 20))
-
-direction_choice_plot = ggplot(D, aes(direction_choice, fill = direction_choice)) # THE FIRST ARGUMENT VALUES AFTER 'AES' CORRESPONDS
-direction_choice_plot+geom_bar() + theme_bw() + # remove the gray background
-  scale_fill_manual(values= c("#66545E","#A39193","#AA6F73","#EEA990")) +
-  xlab("SOC Consistent & Inverse Construction") +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),
-        legend.position="none") +
-  scale_y_continuous(expand = c(0, 0)) + # ensure that bars hit the x-axis
-  coord_cartesian(ylim=c(0, 20))
-
-control_choice_plot = ggplot(D, aes(control_choice, fill = control_choice)) # THE FIRST ARGUMENT VALUES AFTER 'AES' CORRESPONDS
-control_choice_plot+geom_bar() + theme_bw() + # remove the gray background
-  scale_fill_manual(values= c("#66545E","#A39193","#AA6F73","#EEA990")) +
-  xlab("Order Consistent & Order Inconsistent") +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),
-        legend.position="none") +
-  scale_x_discrete(drop=FALSE) +
-  scale_y_continuous(expand = c(0, 0)) + # ensure that bars hit the x-axis
-  coord_cartesian(ylim=c(0, 20))
-
 
