@@ -364,25 +364,18 @@ multinom_control_choice_p
 # more or less the direction data.
 
 
-# activity level analysis 
-D$test_ratingDiff = D$test_rating_correct - D$test_rating_incorrect
-D$direction_ratingDiff = D$direction_rating_SOCconsistent - D$direction_rating_inverse
-D$control_ratingDiff = D$control_rating_ordered - D$control_rating_inverse
-
-t.test(D$test_ratingDiff[D$control_choice=="Both"], D$test_ratingDiff[D$control_choice=="Order-Consistent"])
-t.test(D$direction_ratingDiff[D$control_choice=="Both"], D$direction_ratingDiff[D$control_choice=="Order-Consistent"])
-t.test(D$control_ratingDiff[D$control_choice=="Both"], D$control_ratingDiff[D$control_choice=="Order-Consistent"])
-
-
 ## Follow-up t-tests ##
 
 ## assess whether participants were more likely to provide higher (or even lower) ##
-## ratings for the correct and incorrect objects during the test trial            ##
+## ratings for the correct and incorrect objects during the test trial ##
+
+# correct ratings
 mean_test_rating_correct = mean(D$test_rating_correct)
 mean_test_rating_correct
 sd_test_rating_correct = sd(D$test_rating_correct)
 sd_test_rating_correct
 
+# incorrect ratings
 mean_test_rating_incorrect = mean(D$test_rating_incorrect)
 mean_test_rating_incorrect
 sd_test_rating_incorrect = sd(D$test_rating_incorrect)
@@ -406,6 +399,49 @@ test_rating_barplot + stat_summary(fun = mean, geom = "bar", position = "dodge")
   coord_cartesian(ylim=c(0, 1)) +
   scale_fill_manual(values = c("black", "azure3")) +
   theme_bw()
+
+
+
+
+# Examine whether there is an effect of whether participants chose the SOC object during
+# the replication trial (i.e., D$test_choice) on their ratings of the correct (i.e., D$test_rating_correct)
+# & incorrect objects.
+aov_test_choice_correct = aov(test_rating_correct~test_choice,
+                              data = D)
+summary(aov_test_choice_correct)
+
+# rating of correct object for those who chose correctly
+mean(D$test_rating_correct[D$test_choice=="Correct"])
+sd(D$test_rating_correct[D$test_choice=="Correct"])
+
+# rating of correct object for those who chose incorrectly
+mean(D$test_rating_correct[D$test_choice=="Incorrect"])
+sd(D$test_rating_correct[D$test_choice=="Incorrect"])
+
+# CONCLUSION:
+# This analysis indicates that those who chose the SOC object during the replication (test) trial
+# were significantly more confident in their ratings (M = 67.88, SD = 14.71) than those who chose
+# the SOC inconsistent object (M = 45.83, SD = 25.77), F(1,30) = 8.15, p < .01.
+
+
+aov_test_choice_incorrect = aov(test_rating_incorrect~test_choice,
+                              data = D)
+summary(aov_test_choice_incorrect)
+
+# rating of incorrect object for those who chose correctly
+mean(D$test_rating_incorrect[D$test_choice=="Correct"])
+sd(D$test_rating_incorrect[D$test_choice=="Correct"])
+
+# rating of incorrect object for those who chose incorrectly
+mean(D$test_rating_incorrect[D$test_choice=="Incorrect"])
+sd(D$test_rating_incorrect[D$test_choice=="Incorrect"])
+
+# CONCLUSION:
+# This analysis indicates that those who chose the SOC object during the replication (test) trial
+# were, perhaps counterintuitively, significantly *less* confident in their ratings (M = 30.38, SD = 15.99) than those who chose
+# the SOC inconsistent object (M = 47.5, SD = 26.03), F(1,30) = 4.379, p = .01. This finding makes sense given that
+# those who were incorrect were more confident in their incorrect choices, just as those who were correct (i.e., chose the correct)
+# test object were more confident in their ratings.
 
 # t-test Figure #
 # rating difference in Control Test Trial
