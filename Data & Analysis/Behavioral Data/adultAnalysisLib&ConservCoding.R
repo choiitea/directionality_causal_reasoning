@@ -509,3 +509,325 @@ test_rating_incorrect_barplot + stat_summary(fun = mean, geom = "bar", position 
 # those who were incorrect were more confident in their incorrect choices, just as those who were correct (i.e., chose the correct)
 # test object were more confident in their ratings.
 
+
+
+
+
+# Examine whether there is an effect of whether participants chose the direction-consistent object during
+# the direction trial (i.e., D$direction_choice_lib or D$direction_choice_conserv) for both 
+# the liberal and conservative codings
+# on their ratings of the direction consistent and inverse objects (D$direction_rating_SOCconsistent or 
+# D$direction_rating_inverse)
+# & incorrect objects.
+table(D$direction_choice_lib)
+aov_direction_choice_lib_correct = aov(D$direction_rating_SOCconsistent~D$direction_choice_lib,
+                              data = D)
+summary(aov_direction_choice_lib_correct)
+
+# CONCLUSION: Participants who chose the order consistent object were not more confident in their
+# ratings of the direction-consistent test object than those who responded with some other pattern.
+
+
+table(D$direction_choice_conserv)
+aov_direction_choice_conserv_correct = aov(D$direction_rating_SOCconsistent~D$direction_choice_conserv,
+                                       data = D)
+summary(aov_direction_choice_conserv_correct)
+
+# both
+mean(D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Both"])
+sd(D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Both"])
+
+# order consistent
+mean(D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Order Consistent"])
+sd(D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Order Consistent"])
+
+# inverse 
+mean(D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Inverse"])
+sd(D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Inverse"])
+
+# neither 
+mean(D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Neither"])
+sd(D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Neither"])
+
+# Figure
+direction_rating_SOCconsistent_barplot = ggplot(D, aes(direction_choice_conserv,direction_rating_SOCconsistent, fill = direction_choice_conserv)) # create the bar graph with test.trial.2 on the x-axis and measure on the y-axis
+direction_rating_SOCconsistent_barplot + stat_summary(fun = mean, geom = "bar", position = "dodge") + # add the bars, which represent the means and the place them side-by-side with 'dodge'
+  stat_summary(fun.data=mean_cl_boot, geom = "errorbar", position = position_dodge(width=0.90), width = 0.2) + # add errors bars
+  ylab("Rating") + # change the label of the y-axis
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 1)) +
+  scale_fill_manual(values=c("black","#ffc857", "dark blue", "purple")) +
+  theme_bw()
+
+# follow-up t-tests
+both_direction_choice_correct = D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Both"]
+order_consistent_direction_choice_correct = D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Order Consistent"]
+neither_direction_choice_correct = D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Neither"]
+
+# compare the confidence ratings for the order consistent test object between those who responded "both" and those
+# who responded by choosing the order-consistent test object.
+both_vs_order_consistent_t_test = t.test(both_direction_choice_correct,
+                                         order_consistent_direction_choice_correct,
+                                         alternative = "two.sided") 
+both_vs_order_consistent_t_test
+
+# compare the confidence ratings for the order consistent test object between those who responded "both" and those
+# who responded "neither.
+both_vs_neither_t_test = t.test(both_direction_choice_correct,
+                                neither_direction_choice_correct,
+                                alternative = "two.sided")
+both_vs_neither_t_test
+
+
+# compare the confidence ratings for the order consistent test object between those who responded by choosing the 
+# directionally consistent object and those
+# who responded "neither.
+direction_consistent_vs_neither_t_test = t.test(order_consistent_direction_choice_correct,
+                                neither_direction_choice_correct,
+                                alternative = "two.sided")
+direction_consistent_vs_neither_t_test
+
+
+# CONCLUSION: Those who chose both objects or the order consistent one were more confident in their ratings than those who chose
+# the inverse object or neither object. We can't run analyses on those who chose the inverse because so few of them (N = 1) responded 
+# this way.
+
+
+
+# liberal coding
+table(D$direction_choice_lib)
+aov_direction_choice_lib_inverse = aov(D$direction_rating_inverse~D$direction_choice_lib,
+                                       data = D)
+summary(aov_direction_choice_lib_inverse)
+
+mean(D$direction_rating_inverse[D$direction_choice_lib=="Other"])
+sd(D$direction_rating_inverse[D$direction_choice_lib=="Other"])
+
+mean(D$direction_rating_inverse[D$direction_choice_lib=="Order Consistent"])
+sd(D$direction_rating_inverse[D$direction_choice_lib=="Order Consistent"])
+
+# CONCLUSION: Participants who chose the order consistent object were much less confident in their
+# ratings of the inverse object test than those who chose the inverse object.
+
+
+table(D$direction_choice_conserv)
+aov_direction_choice_conserv_inverse = aov(D$direction_rating_inverse~D$direction_choice_conserv,
+                                           data = D)
+summary(aov_direction_choice_conserv_inverse)
+
+# both
+mean(D$direction_rating_inverse[D$direction_choice_conserv=="Both"])
+sd(D$direction_rating_inverse[D$direction_choice_conserv=="Both"])
+
+# order consistent
+mean(D$direction_rating_inverse[D$direction_choice_conserv=="Order Consistent"])
+sd(D$direction_rating_inverse[D$direction_choice_conserv=="Order Consistent"])
+
+# inverse 
+mean(D$direction_rating_inverse[D$direction_choice_conserv=="Inverse"])
+sd(D$direction_rating_inverse[D$direction_choice_conserv=="Inverse"])
+
+# neither 
+mean(D$direction_rating_inverse[D$direction_choice_conserv=="Neither"])
+sd(D$direction_rating_inverse[D$direction_choice_conserv=="Neither"])
+
+# Figure
+direction_rating_inverse_barplot = ggplot(D, aes(direction_choice_conserv,direction_rating_inverse, fill = direction_choice_conserv)) # create the bar graph with test.trial.2 on the x-axis and measure on the y-axis
+direction_rating_inverse_barplot + stat_summary(fun = mean, geom = "bar", position = "dodge") + # add the bars, which represent the means and the place them side-by-side with 'dodge'
+  stat_summary(fun.data=mean_cl_boot, geom = "errorbar", position = position_dodge(width=0.90), width = 0.2) + # add errors bars
+  ylab("Rating") + # change the label of the y-axis
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 1)) +
+  scale_fill_manual(values=c("black","#ffc857", "dark blue", "purple")) +
+  theme_bw()
+
+# follow-up t-tests
+both_direction_choice_inverse = D$direction_rating_inverse[D$direction_choice_conserv=="Both"]
+order_consistent_direction_choice_inverse = D$direction_rating_inverse[D$direction_choice_conserv=="Order Consistent"]
+neither_direction_choice_inverse = D$direction_rating_inverse[D$direction_choice_conserv=="Neither"]
+
+# compare the confidence ratings for the order consistent test object between those who responded "both" and those
+# who responded by choosing the order-consistent test object.
+both_vs_order_consistent_inverse_t_test = t.test(both_direction_choice_inverse,
+                                                 order_consistent_direction_choice_inverse,
+                                         alternative = "two.sided") 
+both_vs_order_consistent_inverse_t_test
+
+# compare the confidence ratings for the order consistent test object between those who responded "both" and those
+# who responded "neither.
+both_vs_neither_inverse_t_test = t.test(both_direction_choice_inverse,
+                                neither_direction_choice_inverse,
+                                alternative = "two.sided")
+both_vs_neither_inverse_t_test
+
+
+# compare the confidence ratings for the order consistent test object between those who responded by choosing the 
+# directionally consistent object and those
+# who responded "neither.
+direction_consistent_vs_neither_inverse_t_test = t.test(order_consistent_direction_choice_inverse,
+                                                neither_direction_choice_correct,
+                                                alternative = "two.sided")
+direction_consistent_vs_neither_inverse_t_test
+
+
+# CONCLUSION: Those who chose both objects  were more confident in their ratings of the inverse object than those who
+# chose the order consistent object than neither object.
+# the inverse object or neither object. We can't run analyses on those who chose the inverse because so few of them (N = 1) responded 
+# this way.
+
+
+
+# Examine whether there is an effect of whether participants chose the direction-consistent object during
+# the control trial for boththe liberal and conservative codings
+# on their ratings of the control_ordered and inverse object.
+table(D$control_choice_lib)
+aov_control_choice_lib_correct = aov(D$control_rating_ordered~D$control_choice_lib,
+                                       data = D)
+summary(aov_control_choice_lib_correct)
+
+mean(D$control_rating_ordered[D$control_choice_lib=="Order Consistent"])
+mean(D$control_rating_ordered[D$control_choice_lib=="Other"])
+
+# CONCLUSION: Participants who chose the order consistent object were more confident in their
+# ratings of the direction-consistent test object than those who responded with some other pattern.
+
+
+table(D$control_choice_conserv)
+aov_control_choice_conserv_correct = aov(D$control_rating_ordered~D$control_choice_conserv,
+                                           data = D)
+summary(aov_control_choice_conserv_correct)
+
+# both
+mean(D$control_rating_ordered[D$control_choice_conserv=="Both"])
+sd(D$control_rating_ordered[D$control_choice_conserv=="Both"])
+
+# order consistent
+mean(D$control_rating_ordered[D$control_choice_conserv=="Order Consistent"])
+sd(D$control_rating_ordered[D$control_choice_conserv=="Order Consistent"])
+
+# inverse 
+mean(D$control_rating_ordered[D$control_choice_conserv=="Inverse"])
+sd(D$control_rating_ordered[D$control_choice_conserv=="Inverse"])
+
+# neither 
+mean(D$control_rating_ordered[D$control_choice_conserv=="Neither"])
+sd(D$control_rating_ordered[D$control_choice_conserv=="Neither"])
+
+# Figure
+control_rating_ordered_barplot = ggplot(D, aes(control_choice_conserv,control_rating_ordered, fill = control_choice_conserv)) # create the bar graph with test.trial.2 on the x-axis and measure on the y-axis
+control_rating_ordered_barplot + stat_summary(fun = mean, geom = "bar", position = "dodge") + # add the bars, which represent the means and the place them side-by-side with 'dodge'
+  stat_summary(fun.data=mean_cl_boot, geom = "errorbar", position = position_dodge(width=0.90), width = 0.2) + # add errors bars
+  ylab("Rating") + # change the label of the y-axis
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 1)) +
+  scale_fill_manual(values=c("black","#ffc857", "dark blue", "purple")) +
+  theme_bw()
+
+# follow-up t-tests
+both_control_choice_correct = D$control_rating_ordered[D$control_choice_conserv=="Both"]
+order_control_direction_choice_correct = D$control_rating_ordered[D$control_choice_conserv=="Order Consistent"]
+neither_control_choice_correct = D$control_rating_ordered[D$control_choice_conserv=="Neither"]
+
+# compare the confidence ratings for the order consistent test object between those who responded "both" and those
+# who responded by choosing the order-consistent test object.
+control_both_vs_order_consistent_t_test = t.test(both_control_choice_correct,
+                                         order_control_direction_choice_correct,
+                                         alternative = "two.sided") 
+control_both_vs_order_consistent_t_test
+
+# compare the confidence ratings for the order consistent test object between those who responded "both" and those
+# who responded "neither.
+control_both_vs_neither_t_test = t.test(both_control_choice_correct,
+                                        neither_control_choice_correct,
+                                alternative = "two.sided")
+control_both_vs_neither_t_test
+
+
+# compare the confidence ratings for the order consistent test object between those who responded by choosing the 
+# directionally consistent object and those
+# who responded "neither.
+control_direction_consistent_vs_neither_t_test = t.test(order_control_direction_choice_correct,
+                                                        neither_control_choice_correct,
+                                                alternative = "two.sided")
+control_direction_consistent_vs_neither_t_test
+
+
+# CONCLUSION: Those who chose both objects or the order consistent one were more confident in their ratings of the order
+# consistent test object than those who chose neither object. 
+
+
+
+# liberal coding
+table(D$control_choice_lib)
+aov_control_choice_lib_inverse = aov(D$control_rating_inverse~D$control_choice_lib,
+                                       data = D)
+summary(aov_control_choice_lib_inverse)
+
+mean(D$control_rating_inverse[D$control_choice_lib=="Other"])
+sd(D$control_rating_inverse[D$control_choice_lib=="Other"])
+
+mean(D$control_rating_inverse[D$control_choice_lib=="Order Consistent"])
+sd(D$control_rating_inverse[D$control_choice_lib=="Order Consistent"])
+
+# CONCLUSION: Participants who chose the order consistent object were much less confident in their
+# ratings of the inverse object test than those who chose the inverse object. Makes sense.
+
+
+table(D$control_choice_conserv)
+aov_control_choice_conserv_inverse = aov(D$control_rating_inverse~D$control_choice_conserv,
+                                           data = D)
+summary(aov_control_choice_conserv_inverse)
+
+# both
+mean(D$control_rating_inverse[D$control_choice_conserv=="Both"])
+sd(D$control_rating_inverse[D$control_choice_conserv=="Both"])
+
+# order consistent
+mean(D$control_rating_inverse[D$control_choice_conserv=="Order Consistent"])
+sd(D$control_rating_inverse[D$control_choice_conserv=="Order Consistent"])
+
+# inverse 
+mean(D$control_rating_inverse[D$control_choice_conserv=="Inverse"])
+sd(D$control_rating_inverse[D$control_choice_conserv=="Inverse"])
+
+# neither 
+mean(D$control_rating_inverse[D$control_choice_conserv=="Neither"])
+sd(D$control_rating_inverse[D$control_choice_conserv=="Neither"])
+
+# Figure
+control_rating_inverse_barplot = ggplot(D, aes(control_choice_conserv,control_rating_inverse, fill = control_choice_conserv)) # create the bar graph with test.trial.2 on the x-axis and measure on the y-axis
+control_rating_inverse_barplot + stat_summary(fun = mean, geom = "bar", position = "dodge") + # add the bars, which represent the means and the place them side-by-side with 'dodge'
+  stat_summary(fun.data=mean_cl_boot, geom = "errorbar", position = position_dodge(width=0.90), width = 0.2) + # add errors bars
+  ylab("Rating") + # change the label of the y-axis
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim=c(0, 1)) +
+  scale_fill_manual(values=c("black","#ffc857", "dark blue", "purple")) +
+  theme_bw()
+
+# follow-up t-tests
+both_control_choice_inverse = D$control_rating_inverse[D$control_choice_conserv=="Both"]
+order_consistent_control_choice_inverse = D$control_rating_inverse[D$control_choice_conserv=="Order Consistent"]
+neither_control_choice_inverse = D$control_rating_inverse[D$control_choice_conserv=="Neither"]
+
+# compare the confidence ratings for the order consistent test object between those who responded "both" and those
+# who responded by choosing the order-consistent test object.
+control_both_vs_order_consistent_inverse_t_test = t.test(both_control_choice_inverse,
+                                                 order_consistent_control_choice_inverse,
+                                                 alternative = "two.sided") 
+control_both_vs_order_consistent_inverse_t_test
+
+# compare the confidence ratings for the order consistent test object between those who responded "both" and those
+# who responded "neither.
+control_both_vs_neither_inverse_t_test = t.test(both_control_choice_inverse,
+                                        neither_control_choice_inverse,
+                                        alternative = "two.sided")
+control_both_vs_neither_inverse_t_test
+
+
+# CONCLUSION: Those who chose both objects  were more confident in their ratings of the inverse object than those who
+# chose the order consistent object or those who chose neither object.
+
+
+
+
+
