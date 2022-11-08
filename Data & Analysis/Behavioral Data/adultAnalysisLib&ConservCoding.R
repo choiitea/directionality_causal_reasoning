@@ -293,7 +293,6 @@ test_choice_barplot + geom_bar(position="dodge") +
   theme_bw()
 
 
-
 # Conclusion: participants were significantly more likely to choose the
 # correct object than the incorrect one. This means that adults *do* have
 # access to an SOC mechanism. The data indicate that participants are 
