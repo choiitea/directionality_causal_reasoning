@@ -236,7 +236,7 @@ baseline_test_success_odds
 table(D$direction_choice_lib)
 baseline_direction_ordered_lib_prob = table(D$direction_choice_lib)[[2]]/(table(D$direction_choice_lib)[[1]]+table(D$direction_choice_lib)[[2]])
 baseline_direction_ordered_lib_prob 
-baseline_direction_ordered_lib_odds = baseline_direction_ordered__lib_prob/(1-baseline_direction_ordered_lib_prob) # this is what will be shown
+baseline_direction_ordered_lib_odds = baseline_direction_ordered_lib_prob/(1-baseline_direction_ordered_lib_prob) # this is what will be shown
 baseline_direction_ordered_lib_odds
 
 table(D$direction_choice_conserv)
@@ -283,6 +283,7 @@ glm_test_choice = glm(test_choice~1,
                            data = D, 
                            family = "binomial")
 summary(glm_test_choice)
+#estimate = coefficient -- log odds - so if you exponentiate it, you'll get real odds
 
 # Figure
 test_choice_barplot = ggplot(D, aes(test_choice, fill = test_choice)) 
@@ -551,7 +552,8 @@ sd(D$direction_rating_SOCconsistent[D$direction_choice_conserv=="Neither"])
 
 # Figure
 direction_rating_SOCconsistent_barplot = ggplot(D, aes(direction_choice_conserv,direction_rating_SOCconsistent, fill = direction_choice_conserv)) # create the bar graph with test.trial.2 on the x-axis and measure on the y-axis
-direction_rating_SOCconsistent_barplot + stat_summary(fun = mean, geom = "bar", position = "dodge") + # add the bars, which represent the means and the place them side-by-side with 'dodge'
+direction_rating_SOCconsistent_barplot + 
+  stat_summary(fun = mean, geom = "bar", position = "dodge") + # add the bars, which represent the means and the place them side-by-side with 'dodge'
   stat_summary(fun.data=mean_cl_boot, geom = "errorbar", position = position_dodge(width=0.90), width = 0.2) + # add errors bars
   ylab("Rating") + # change the label of the y-axis
   scale_y_continuous(expand = c(0, 0)) +
@@ -678,7 +680,7 @@ direction_consistent_vs_neither_inverse_t_test
 
 
 # Examine whether there is an effect of whether participants chose the direction-consistent object during
-# the control trial for boththe liberal and conservative codings
+# the control trial for both the liberal and conservative codings
 # on their ratings of the control_ordered and inverse object.
 table(D$control_choice_lib)
 aov_control_choice_lib_correct = aov(D$control_rating_ordered~D$control_choice_lib,
