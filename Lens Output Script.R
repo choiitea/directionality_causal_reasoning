@@ -37,5 +37,5 @@ output_DF[33:64,]$model_type = "split"
 #output_DF[91:120,]$model_type = "strong_inverse"
 
 # Save output DF as csv
-write.csv(output_DF,"combinedModelData_NI_S.csv", row.names = FALSE)
+write.csv(output_DF,"0.01LR_simulation_NI_S.csv", row.names = FALSE)
 

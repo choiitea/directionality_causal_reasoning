@@ -9,3 +9,18 @@ testNetwork 24 StrongInverseExpectation_static 50 causal_strongInverse_b 50 SOCt
 testNetwork 32 noInverseExpectation_static 50 causal_noInverse 50 SOCtest DIRtest ControlledDIRtest combinedModel_NI_S_data.out Conclusion
 testNetwork 16 SplitExpectation_static 50 causal_split_a 50 SOCtest DIRtest ControlledDIRtest combinedModel_NI_S_data.out Conclusion
 testNetwork 16 SplitExpectation_static 50 causal_split_b 50 SOCtest DIRtest ControlledDIRtest combinedModel_NI_S_data.out Conclusion
+
+-- under trained simulations - reducing training epoch by 50%
+testNetwork 32 noInverseExpectation_static 25 causal_noInverse 25 SOCtest DIRtest ControlledDIRtest repM_combinedModel_NI_S_data.out Conclusion
+testNetwork 16 SplitExpectation_static 25 causal_split_a 25 SOCtest DIRtest ControlledDIRtest repM_combinedModel_NI_S_data.out Conclusion
+testNetwork 16 SplitExpectation_static 25 causal_split_b 25 SOCtest DIRtest ControlledDIRtest repM_combinedModel_NI_S_data.out Conclusion
+
+-- under trained simulations - reducing training epoch by 80%
+testNetwork 32 noInverseExpectation_static 10 causal_noInverse 10 SOCtest DIRtest ControlledDIRtest repL_combinedModel_NI_S_data.out Conclusion
+testNetwork 16 SplitExpectation_static 10 causal_split_a 10 SOCtest DIRtest ControlledDIRtest repL_combinedModel_NI_S_data.out Conclusion
+testNetwork 16 SplitExpectation_static 10 causal_split_b 10 SOCtest DIRtest ControlledDIRtest repL_combinedModel_NI_S_data.out Conclusion
+
+-- under trained with lower learning rate (0.04)
+testNetwork 32 noInverseExpectation_static 50 causal_noInverse 50 SOCtest DIRtest ControlledDIRtest 0.01LR_combinedModel_NI_S_data.out Conclusion
+testNetwork 16 SplitExpectation_static 50 causal_split_a 50 SOCtest DIRtest ControlledDIRtest 0.01LR_combinedModel_NI_S_data.out Conclusion
+testNetwork 16 SplitExpectation_static 50 causal_split_b 50 SOCtest DIRtest ControlledDIRtest 0.01LR_combinedModel_NI_S_data.out Conclusion
