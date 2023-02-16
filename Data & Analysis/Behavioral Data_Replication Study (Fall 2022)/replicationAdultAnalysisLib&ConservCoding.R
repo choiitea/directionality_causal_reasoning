@@ -289,6 +289,10 @@ D$final_control_choice_conserv = as.factor(D$final_control_choice_conserv)
 #####################################
 # preliminary analyses and plotting #
 #####################################
+#### memory check failures
+table(D$memory_check)
+# 5 people failed the memory check. 
+
 # get distribution of successes and failure 
 # test_choice
 table(D$test_choice)
