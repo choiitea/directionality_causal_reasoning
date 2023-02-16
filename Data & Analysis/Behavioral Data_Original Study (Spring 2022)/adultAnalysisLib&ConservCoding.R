@@ -381,7 +381,7 @@ glm_control_choice_full = glm(control_choice_lib ~ static_con+causal_con+soc_con
                               data = D, family = "binomial")
 summary(glm_control_choice_full)
 
-D$control_choice_lib = relevel(D$control_choice_lib, ref="Other")
+D$control_choice_lib = relevel(D$control_choice_lib, ref="Order Consistent")
 glm_control_choice = glm(control_choice_lib ~ 1, 
                          data = D, family = "binomial")
 summary(glm_control_choice)
@@ -849,20 +849,24 @@ both_control_choice_inverse = D$control_rating_inverse[D$control_choice_conserv=
 order_consistent_control_choice_inverse = D$control_rating_inverse[D$control_choice_conserv=="Order Consistent"]
 neither_control_choice_inverse = D$control_rating_inverse[D$control_choice_conserv=="Neither"]
 
-# compare the confidence ratings for the order consistent test object between those who responded "both" and those
+# compare the confidence ratings for the order inconsistent test object between those who responded "both" and those
 # who responded by choosing the order-consistent test object.
 control_both_vs_order_consistent_inverse_t_test = t.test(both_control_choice_inverse,
                                                          order_consistent_control_choice_inverse,
                                                          alternative = "two.sided") 
 control_both_vs_order_consistent_inverse_t_test
 
-# compare the confidence ratings for the order consistent test object between those who responded "both" and those
+# compare the confidence ratings for the order inconsistent test object between those who responded "both" and those
 # who responded "neither.
 control_both_vs_neither_inverse_t_test = t.test(both_control_choice_inverse,
                                                 neither_control_choice_inverse,
                                                 alternative = "two.sided")
 control_both_vs_neither_inverse_t_test
 
+t.test(order_consistent_control_choice_inverse, 
+       neither_control_choice_inverse,
+       alternative = "two.sided")
 
 # CONCLUSION: Those who chose both objects  were more confident in their ratings of the inverse object than those who
 # chose the order consistent object or those who chose neither object.
+

@@ -29,11 +29,13 @@ colnames(output_DF) <- c("sim_id","test_activity_correct","test_activity_incorre
 
 output_DF$model_type = rep(0, nrow(output_DF))
 output_DF$model_type = as.character(output_DF$model_type)
-output_DF[1:30,]$model_type = "no_inverse"
-output_DF[31:60,]$model_type = "weak_inverse"
-output_DF[61:90,]$model_type = "split"
-output_DF[91:120,]$model_type = "strong_inverse"
+output_DF[1:32,]$model_type = "no_inverse"
+output_DF[33:64,]$model_type = "split"
+#output_DF[1:30,]$model_type = "no_inverse"
+#output_DF[31:60,]$model_type = "weak_inverse"
+#output_DF[61:90,]$model_type = "split"
+#output_DF[91:120,]$model_type = "strong_inverse"
 
 # Save output DF as csv
-write.csv(output_DF,"combinedModelData_pseudoSoln_v2.csv", row.names = FALSE)
+write.csv(output_DF,"combinedModelData_NI_S.csv", row.names = FALSE)
 
