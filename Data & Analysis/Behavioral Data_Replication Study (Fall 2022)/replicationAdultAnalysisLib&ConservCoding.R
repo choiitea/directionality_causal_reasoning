@@ -43,6 +43,10 @@ is.na(D)
 # 1. exclude those who did not complete training or engage in the full range of test trials
 D <- D[!is.na(D$static_con) & !is.na(D$causal_con) & !is.na(D$soc_con) & !is.na(D$dir_con) & !is.na(D$contrDir_con), ]
 
+## D1 - 
+
+## D2 -
+
 ### note -- think about how to deal with empty responses for object ratings.
 
 ## get the structure of the data ##
