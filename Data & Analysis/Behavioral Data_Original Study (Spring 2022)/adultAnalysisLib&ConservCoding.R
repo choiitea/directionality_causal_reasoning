@@ -291,7 +291,7 @@ glm_test_choice = glm(test_choice~1,
                       family = "binomial")
 summary(glm_test_choice)
 exp(glm_test_choice$coefficients)
-confint(glm_test_choice)
+exp(confint(glm_test_choice))
 #estimate = coefficient -- log odds - so if you exponentiate it, you'll get real odds
 
 # Figure
@@ -325,7 +325,7 @@ glm_direction_choice_lib = glm(direction_choice_lib~1,
                                data = D, family = "binomial")
 summary(glm_direction_choice_lib)
 exp(glm_direction_choice_lib$coefficients)
-confint(glm_direction_choice_lib)
+exp(confint(glm_direction_choice_lib))
 
 # liberal figure
 direction_choice_liberal_barplot = ggplot(D, aes(direction_choice_lib, fill = direction_choice_lib)) 
@@ -378,12 +378,12 @@ glm_control_choice_full = glm(control_choice_lib ~ static_con+causal_con+soc_con
                               data = D, family = "binomial")
 summary(glm_control_choice_full)
 
-D$control_choice_lib = relevel(D$control_choice_lib, ref="Order Consistent")
+D$control_choice_lib = relevel(D$control_choice_lib, ref="Other")
 glm_control_choice = glm(control_choice_lib ~ 1, 
                          data = D, family = "binomial")
 summary(glm_control_choice)
 exp(glm_control_choice$coefficients)
-confint(glm_control_choice)
+exp(confint(glm_control_choice))
 
 # liberal figure
 control_choice_lib_barplot = ggplot(D, aes(x=reorder(control_choice_lib, control_choice_lib, function(x)-length(x)), fill = control_choice_lib)) # create the bar graph with test.trial.2 on the x-axis and measure on the y-axis
